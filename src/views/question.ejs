@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <%- include("partials/navbar.ejs") %>
+    <main role="main">
+        <div class="container main-container">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="p-2 mt-2"><%= question.title %></h2>
+                </div>
+                <div class="card-body">
+                    <p class="m-3"><%= question.description %></p>
+                </div>
+            </div>
+            <div>
+                <form action="/question/<%= question.id %>" method="POST" class="mt-5">
+                    <textarea class="form-control" id="answer-text" name="answer" placeholder="Digite uma resposta..." maxlength="255"></textarea>
+                    <div class="d-flex justify-content-end">
+                        <span id="remaining-chars" class="chars">255</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-3">Responder</button>
+                </form>
+            </div>
+            <hr class="mt-4 mb-4">
+            <div class="container-fluid d-flex justify-content-end">
+                <h3 class="display-6">Respostas</h3>
+            </div>
+            <% answers.forEach(answer => { %>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <p><%= answer.value %></p>
+                        <% var days = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado']; %>
+                        <% var months = ['Jan.', 'Fev.', 'Mar.', 'Abr.', 'Mai.', 'Jun.', 'Jul.', 'Ago.', 'Set.', 'Out.', 'Nov.', 'Dez.']; %>
+                        <% var dateData = answer.createdAt.split('-'); %>
+                        <% var date = `${days[dateData[0]]}, ${dateData[1]} de ${months[dateData[2]-1]} de ${dateData[3]} às ${dateData[4]}`%>
+                        <p class="text-end" style="font-size: 13px; color: grey; margin-bottom: -1vh;"><%= date %></p>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+</body>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <%- include("partials/navbar.ejs") %>
+    <main role="main">
+        <div class="container">
+            <div class="container text-center main-container">
+                <h1 class="display-5 fw-bold fst-italic mb-5">
+                    <a id="title" class="typewrite" data-period="2000" data-type='[ "Ask Anom", "O seu site de dúvidas!" ]'>
+                        <span class="wrap"></span>
+                    </a>
+                </h1>
+            </div>
+            <hr>
+            <div class="container-fluid d-flex justify-content-end">
+                <a href="/question/new"><button class="btn btn-primary btn-lg mt-5 mb-5">Abrir tópico</button></a>
+            </div>
+            <% if (questions.length < 1) { %>
+                <h3 class="text-center">Nenhum tópico encontrado</h3>
+            <% } else { %>
+                <% questions.forEach(question => { %>
+                    <div class="card mt-2">
+                        <div class="container-fluid d-flex flex-row justify-content-between card-header p-4">
+                            <h4><%= question.title %></h4>
+                            <a href="/question/id/<%= question.id %>"><button class="btn btn-outline-primary btn-sm">Responder</button></a>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </main>
+</body>
+
+<script src="/js/typewriter.js"></script>
+<%- include("partials/footer.ejs") %>

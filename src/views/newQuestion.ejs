@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <%- include("partials/navbar.ejs") %>
+    <main role="main">
+        <div class="container main-container">
+            <div class="card" id="question-form">
+                <div class="card-header text-center">
+                    <h3 class="mt-2">Nova dúvida</h3>
+                </div>
+                <div class="card-body container-fluid">
+                    <form action="/question/new/" method="POST"><br>
+                        <label>Título</label>
+                        <input class="form-control mt-1" type="text" name="title" placeholder="Título">
+                        <br>
+                        <label>Descrição</label>
+                        <textarea class="form-control mt-1" name="description" placeholder="Descreva sua dúvida..."></textarea>
+                        <br>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-outline-primary btn-sm mt-2">Enviar dúvida</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<%- include("partials/footer.ejs") %>
