@@ -5,9 +5,10 @@ ___________
 
 ### Step by Step
 
-1. Configure a .env file
+1. Install and configure a database (MySQL for example)
+2. Configure a .env file
 
     ![.env example config](https://i.imgur.com/KB81Gk1.png)
 
-2. Type and run "npm install"
-3. Type and run "npm run dev"
+3. Type and run "**npm install**"
+4. Type and run "**npm run dev**"
