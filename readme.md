@@ -6,6 +6,8 @@ ___________
 ### Step by Step
 
 1. Configure a .env file
-> ![.env example config](https://imgur.com/a/U7K7PcE)
+
+    ![.env example config](https://imgur.com/a/U7K7PcE)
+
 2. Type and run "npm install"
 3. Type and run "npm run dev"
