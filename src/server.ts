@@ -19,11 +19,7 @@ class Main {
     constructor() {
         this.express = express();
 
-        this.applyConfigurations();
-        this.buildDatabase();
-        this.buildRoutes();
-
-        setTimeout(() => this.startServer(), 3000);
+        this.applyConfigurations()
     }
 
     private applyConfigurations(): void {
@@ -34,25 +30,31 @@ class Main {
         this.express.set('view engine', 'ejs');
         this.express.set('views', path.join(__dirname, 'views'))
 
-        console.log('[✔] Configurações aplicadas!');
+        console.log('✔ Express settings seted');
+
+        this.buildDatabase();
     }
 
     private buildDatabase(): void {
         database.authenticate()
-            .then(() => console.log('[✔] Conexão estabelecida com a base de dados!'))
-            .catch(err => console.error(err));        
+            .then(() => {
+                console.log('✔ Database connected');
+                this.buildRoutes();
+            }).catch(err => console.error(err));        
     }
 
     private buildRoutes(): void {
         this.express.use('/', mainRoutes);
         this.express.use('/question', questionRoutes);
 
-        console.log('[✔] Rotas construídas!');
+        console.log('✔ Routes builded');
+
+        this.startServer();
     }
 
     private startServer(): void {
         this.express.listen(this.port, () => {
-            console.log(`[✔] Servidor iniciado em http://localhost:${this.port}/`);
+            console.log(`✔ Server is running on http://localhost:${this.port}/`);
         });
     }
 }

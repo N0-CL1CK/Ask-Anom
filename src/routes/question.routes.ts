@@ -37,8 +37,8 @@ router.route('/id/:id')
                 .then(() => {})
                 .catch(err => console.error(err));
 
-            return res.redirect(`/question/${id}`);
-        } else return res.redirect(`/question/${id}`);
+            return res.redirect(`/question/id/${id}`);
+        } else return res.redirect(`/question/id/${id}`);
         
     });
 
